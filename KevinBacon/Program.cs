@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace KevinBacon
 {
+	/*Dijkstra's algorithm ( if only, weight or length given)
+	 * let's try the depth first search 
+	 * 
+	 */
 	public class ActorGraphNode
 	{
 		private String name;
@@ -19,9 +23,11 @@ namespace KevinBacon
 			ActorGraphNode current;
 
 
-			while ( (current = queue.Dequeue()) != null){
+			while ( queue.Count >= 1)
+			{
+				current = queue.Dequeue ();
 				foreach(ActorGraphNode n  in current.linkedActors){
-					if (-1 == n.baconNumber) {
+					if ( -1 == n.baconNumber) {
 						n.baconNumber = current.baconNumber + 1;
 						queue.Enqueue (n);
 					}
@@ -39,8 +45,7 @@ namespace KevinBacon
 			linkedActors.Add (costar);
 			costar.linkedActors.Add (this);
 		}
-
-
+			
 		public static void Main (string[] args)
 		{
 			ActorGraphNode Kevin = new ActorGraphNode ("Kevin");
@@ -54,7 +59,7 @@ namespace KevinBacon
 			B.linkCostar (C);
 			Kevin.setBaconNumber ();
 
-			Console.WriteLine (Kevin.name + "->");
+			Console.WriteLine (Kevin.name + "->" );
 		}
 	}
 }
