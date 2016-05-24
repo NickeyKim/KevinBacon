@@ -26,6 +26,7 @@ namespace KevinBacon
 			while ( queue.Count >= 1)
 			{
 				current = queue.Dequeue ();
+				Console.WriteLine (current.name);
 				foreach(ActorGraphNode n  in current.linkedActors){
 					if ( -1 == n.baconNumber) {
 						n.baconNumber = current.baconNumber + 1;
@@ -33,6 +34,7 @@ namespace KevinBacon
 					}
 
 				}
+				Console.WriteLine ("BaconNumber is :"+ current.getBaconNumber());
 			}
 		}
 		public ActorGraphNode (String name)
@@ -59,7 +61,8 @@ namespace KevinBacon
 			B.linkCostar (C);
 			Kevin.setBaconNumber ();
 
-			Console.WriteLine (Kevin.name + "->" );
+			Console.WriteLine ("A's Bacon Number is "+A.getBaconNumber ());
+			//Console.WriteLine (Kevin.name + "->" );
 		}
 	}
 }
